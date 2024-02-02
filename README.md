@@ -97,3 +97,59 @@
 	- String strAge = request.getParameter("age");
 		- 모든 내용은 문자열로 변환된다, 만약 값이 정수라면, 변환해서 사용한다.
 	- int age = Integer.parseInt(strAge);
+## request 예제
+### _02_oddForm.jsp
+```
+<h2>홀수짝수 판별</h2>
+<form method="post" action="_02_oddPro.jsp">
+	숫자 : <input type="text" name="num"> <input type="submit" value="입력">
+</form>
+```
+### _02_oddPro.jsp
+```
+<%
+	String strNum = request.getParameter("num");
+	int num = Integer.parseInt(strNum);
+%>
+<h2>홀수짝수 판별</h2>
+<% if (num % 2 == 0) { %>
+<p>짝수</p>
+<% } else { %>
+<p>홀수</p>
+<% } %>
+
+<a href="_02_oddForm.jsp">뒤로가기</a>
+```
+## hiddenForm
+### _06_hiddenForm.jsp
+```html
+ <%
+ 	Random ran = new Random();
+ 	int num1 = ran.nextInt(8) + 2;
+ 	int num2 = ran.nextInt(8) + 2;
+ 	int result = num1 * num2;
+ %>
+ <h1>구구단 게임</h1>
+ <form method="post" action="_06_hiddenPro.jsp">
+ 	<h2><%=num1%> x <%=num2%> = <input type="text" name="userInput"></h2>
+ 	<input type="hidden" name="num1" value=<%=num1%>>
+ 	<input type="hidden" name="num2" value=<%=num2%>>
+ 	<input type="hidden" name="result" value=<%=result%>>
+ 	<input type="submit" value="입력완료">
+ </form>
+```
+### _06_hiddenPro.jsp
+```html
+<%
+	String num1 = request.getParameter("num1");
+	String num2 = request.getParameter("num2");
+	int result = Integer.parseInt(request.getParameter("result"));
+	int userInput = Integer.parseInt(request.getParameter("userInput"));
+%>
+<h1>구구단 게임</h1>
+<h2><%=num1%> x <%=num2%> = <input type="text" value=<%=userInput%> readonly></h2>
+<h3>정답은 <%=result%>, <%=(result == userInput) ? "정답":"땡"%></h3>
+<a href="_06_hiddenForm.jsp">돌아가기</a>
+```
+- 사용자로부터 입력은 받지 않았으나, 반드시 다음 페이지에서 필요한 데이터의 경우에는
+- <code>input type="hidden"</code> 이라는 속성을 이용해 데이터를 전달할 수 있다
