@@ -151,5 +151,4 @@
 <h3>정답은 <%=result%>, <%=(result == userInput) ? "정답":"땡"%></h3>
 <a href="_06_hiddenForm.jsp">돌아가기</a>
 ```
-- 사용자로부터 입력은 받지 않았으나, 반드시 다음 페이지에서 필요한 데이터의 경우에는
-- <code>input type="hidden"</code> 이라는 속성을 이용해 데이터를 전달할 수 있다
+- 다음 페이지에서 필요한 데이터는 <code>input type="hidden"</code> 속성을 이용해 데이터를 전달할 수 있다
