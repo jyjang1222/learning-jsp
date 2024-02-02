@@ -28,9 +28,9 @@
  <h1>구구단 게임</h1>
  <form method="post" action="_06_hiddenPro.jsp">
  	<h2><%=num1%> x <%=num2%> = <input type="text" name="userInput"></h2>
- 	<input type="hidden" name="num1" value=<%=num1%>>
- 	<input type="hidden" name="num2" value=<%=num2%>>
- 	<input type="hidden" name="result" value=<%=result%>>
+ 	<input type="hidden" name="num1" value="<%=num1%>">
+ 	<input type="hidden" name="num2" value="<%=num2%>">
+ 	<input type="hidden" name="result" value="<%=result%>">
  	<input type="submit" value="입력완료">
  </form>
  
