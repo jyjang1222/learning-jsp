@@ -64,3 +64,36 @@
 - 지시자 태그를 사용해서 Random 클래스를 import한다. (= 자바와 동일)		
 - 자동완성 기능을 사용하면 import를 자동으로 작성해준다. <%@page import="java.util.Random"%>	
 - 이처럼 지시자 태그는 처음 JSP 페이지를 셋팅할 때와 자바파일을 import할 때 사용한다.
+
+# 3. jsp Request
+## form 데이터 입력 페이지
+```html
+<form method="post" action="_01_requestPro.jsp">
+	나이 : <input type="text" name="age">
+	<input type="submit" value="입력완료">
+</form>
+```
+- form 태그
+	- submit 버튼과 함께 쓰여 입력받은 데이터를 다음 페이지로 전달한다.
+	- 속성
+		- action="내용을 처리할 페이지명"
+		- method="get" 또는 "post"
+			- 데이터 전달 방식으로 get방식이 기본 속성
+			- get방식은 데이터가 주소로 노출되어 보안에 취약하고 데이터 용량에 제한이 있다.
+			- post방식은 데이터가 주소로 노출되지 않아 보안에 강하고 대용량 데이터 전달이 가능하다.
+- input 태그
+	- name="age" : age변수에 input에 입력된 내용을 저장한다.
+
+## form 데이터 처리 페이지
+```html
+<%
+	String str = request.getParameter("age");
+	int age = Integer.parseInt(str);
+%>
+<h3>당신의 나이는 <%=age%>세 입니다.</h3>
+```
+- 파일명 끝에 Process의 약자인 **Pro** 를 일반적으로 많이 사용한다. (_01_requestPro)
+- 데이터 가져오는 방법 <code>request.getParameter()</code>
+	- String strAge = request.getParameter("age");
+		- 모든 내용은 문자열로 변환된다, 만약 값이 정수라면, 변환해서 사용한다.
+	- int age = Integer.parseInt(strAge);
