@@ -132,9 +132,9 @@
  <h1>구구단 게임</h1>
  <form method="post" action="_06_hiddenPro.jsp">
  	<h2><%=num1%> x <%=num2%> = <input type="text" name="userInput"></h2>
- 	<input type="hidden" name="num1" value=<%=num1%>>
- 	<input type="hidden" name="num2" value=<%=num2%>>
- 	<input type="hidden" name="result" value=<%=result%>>
+ 	<input type="hidden" name="num1" value="<%=num1%>">
+ 	<input type="hidden" name="num2" value="<%=num2%>">
+ 	<input type="hidden" name="result" value="<%=result%>">
  	<input type="submit" value="입력완료">
  </form>
 ```
@@ -152,3 +152,41 @@
 <a href="_06_hiddenForm.jsp">돌아가기</a>
 ```
 - 다음 페이지에서 필요한 데이터는 <code>input type="hidden"</code> 속성을 이용해 데이터를 전달할 수 있다
+
+## 데이터를 다른 JSP 페이지로 전달하는 방법 3가지
+1. form   : action="next.jsp"과 submit버튼
+2. a      : href="next.jsp"
+3. button : onclick="window.location.href='next.jsp'"
+### form
+```html
+<%
+	int x = 10;
+	int y = 20;
+%>
+<form action="_08_formPro.jsp">
+	<input type="hidden" name="x" value="<%=x%>">
+	<input type="hidden" name="x" value="<%=y%>">
+	<input type="text" name="z" value="0">
+	<input type="submit" value="전송">
+</form>
+```
+### a
+```html
+<%
+	int x = 10;
+	int y = 20;
+	int z = 30;
+%>
+
+<a href="_09_aTagPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>">다음페이지</a>
+```
+### button
+```html
+<%
+	int x = 10;
+	int y = 20;
+	int z = 30;
+%>
+
+<button onclick="window.location.href='_10_buttonPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>'">전송</button>
+```
