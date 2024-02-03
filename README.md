@@ -85,11 +85,10 @@
 	- name="age" : age변수에 input에 입력된 내용을 저장한다.
 
 ## form 데이터 처리 페이지
-```html
-<%
-	String str = request.getParameter("age");
-	int age = Integer.parseInt(str);
-%>
+```java
+String str = request.getParameter("age");
+int age = Integer.parseInt(str);
+
 <h3>당신의 나이는 <%=age%>세 입니다.</h3>
 ```
 - 파일명 끝에 Process의 약자인 **Pro** 를 일반적으로 많이 사용한다. (_01_requestPro)
@@ -99,18 +98,17 @@
 	- int age = Integer.parseInt(strAge);
 ## request 예제
 ### _02_oddForm.jsp
-```
+```html
 <h2>홀수짝수 판별</h2>
 <form method="post" action="_02_oddPro.jsp">
 	숫자 : <input type="text" name="num"> <input type="submit" value="입력">
 </form>
 ```
 ### _02_oddPro.jsp
-```
-<%
-	String strNum = request.getParameter("num");
-	int num = Integer.parseInt(strNum);
-%>
+```java
+String strNum = request.getParameter("num");
+int num = Integer.parseInt(strNum);
+
 <h2>홀수짝수 판별</h2>
 <% if (num % 2 == 0) { %>
 <p>짝수</p>
@@ -122,13 +120,13 @@
 ```
 ## hiddenForm
 ### _06_hiddenForm.jsp
-```html
- <%
- 	Random ran = new Random();
- 	int num1 = ran.nextInt(8) + 2;
- 	int num2 = ran.nextInt(8) + 2;
- 	int result = num1 * num2;
- %>
+```java
+
+Random ran = new Random();
+int num1 = ran.nextInt(8) + 2;
+int num2 = ran.nextInt(8) + 2;
+int result = num1 * num2;
+
  <h1>구구단 게임</h1>
  <form method="post" action="_06_hiddenPro.jsp">
  	<h2><%=num1%> x <%=num2%> = <input type="text" name="userInput"></h2>
@@ -139,13 +137,12 @@
  </form>
 ```
 ### _06_hiddenPro.jsp
-```html
-<%
-	String num1 = request.getParameter("num1");
-	String num2 = request.getParameter("num2");
-	int result = Integer.parseInt(request.getParameter("result"));
-	int userInput = Integer.parseInt(request.getParameter("userInput"));
-%>
+```java
+String num1 = request.getParameter("num1");
+String num2 = request.getParameter("num2");
+int result = Integer.parseInt(request.getParameter("result"));
+int userInput = Integer.parseInt(request.getParameter("userInput"));
+
 <h1>구구단 게임</h1>
 <h2><%=num1%> x <%=num2%> = <input type="text" value=<%=userInput%> readonly></h2>
 <h3>정답은 <%=result%>, <%=(result == userInput) ? "정답":"땡"%></h3>
@@ -157,12 +154,12 @@
 1. form   : action="next.jsp"과 submit버튼
 2. a      : href="next.jsp"
 3. button : onclick="window.location.href='next.jsp'"
+
 ### form
 ```html
-<%
-	int x = 10;
-	int y = 20;
-%>
+int x = 10;
+int y = 20;
+
 <form action="_08_formPro.jsp">
 	<input type="hidden" name="x" value="<%=x%>">
 	<input type="hidden" name="x" value="<%=y%>">
@@ -172,21 +169,17 @@
 ```
 ### a
 ```html
-<%
-	int x = 10;
-	int y = 20;
-	int z = 30;
-%>
+int x = 10;
+int y = 20;
+int z = 30;
 
 <a href="_09_aTagPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>">다음페이지</a>
 ```
 ### button
 ```html
-<%
-	int x = 10;
-	int y = 20;
-	int z = 30;
-%>
+int x = 10;
+int y = 20;
+int z = 30;
 
 <button onclick="window.location.href='_10_buttonPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>'">전송</button>
 ```
@@ -250,11 +243,10 @@ response.sendRedirect("_04_responseNext.jsp");
 </form>
 ```
 ```java
-<%
-	request.setCharacterEncoding("UTF-8");
-	
-	String name = request.getParameter("name");
-%>
+request.setCharacterEncoding("UTF-8");
+
+String name = request.getParameter("name");
+
 <h2>name = <%= name %></h2>
 ```
 - form태그의 method속성 값을 post로 했을 경우, URL 경로에 input값이 암호화되어 표기가 안된다.
