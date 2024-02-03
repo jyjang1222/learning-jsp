@@ -152,7 +152,7 @@ String memo = request.getParameter("memo");
 - input태그의 type속성 값으로 radio와 checkbox는 반드시 같은 name속성을 지정해야 한다.
 - textarea는 value 속성이 없지만 <textarea></textarea> 사이의 내용을 value로 인식한다.
 	- <textarea></textarea> 사이에는 칸을 띄우거나 줄을 바꾸지 않도록 주의한다.
-- <code>request.getParameter()</code>를 사용하면 checkbox의 여러 value값을 가져올수있다. 
+- <code>request.getParameterValues()</code>를 사용하면 checkbox의 여러 value값을 가져올수있다. 
 
 ## input type="hidden"
 ### _06_hiddenForm.jsp
