@@ -193,8 +193,8 @@
 
 # 4. Session
 - session은 request와 달리 브라우저가 실행되는 동안 처음부터 끝까지 데이터가 유지된다.
-
-## 세션 저장하기
+## 세션 메서드
+### 세션 저장하기
 ```java
 int x = 10;
 int y = 20;
@@ -204,7 +204,7 @@ session.setAttribute("y", y);
 ```
 - <code>session.setAttribute(키, 값)</code>;
 - 키라는 이름으로 값을 저장할 수 있다.	
-## 세션 꺼내오기
+### 세션 꺼내오기
 ```java
 Object obj = session.getAttribute("x");
 int x = (int)obj;
@@ -213,9 +213,35 @@ int y = (int)obj;
 ```
 - Object obj = <code>session.getAttribute(키)</code>;
 - 키로 데이터를 꺼내올 수 있으며, Object 타입으로 반환된다.
-## 세션 지우기
+### 세션 지우기
 - <code>session.removeAttribute(키)</code>
 - 키로 세션에 저장된 데이터를 삭제할 수 있다.
-## 세션 모두 지우기
+### 세션 모두 지우기
 - <code>session.invalidate()</code>
 - 모든 세션을 삭제할 수 있다.
+
+## Response
+```java
+System.out.println("response");
+response.sendRedirect("_04_responseNext.jsp");
+```
+- 페이지를 바로 이동할 때 response를 사용한다.
+
+## form post 주의점
+```html
+<form method="post" action="_05_formPostPro.jsp">
+	이름 : <input type="text" name="name">
+	<input type="submit" value="전송">
+</form>
+```
+```java
+<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String name = request.getParameter("name");
+%>
+<h2>name = <%= name %></h2>
+```
+- form태그의 method속성 값을 post로 했을 경우, URL 경로에 input값이 암호화되어 표기가 안된다.
+- 아래처럼 다음 페이지에서는 인코딩 처리를 하지 않으면 한글은 깨진다.
+- request.setCharacterEncoding("UTF-8");
