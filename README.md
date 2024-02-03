@@ -203,7 +203,8 @@ session.setAttribute("x", x);
 session.setAttribute("y", y);
 ```
 - <code>session.setAttribute(키, 값)</code>;
-- 키라는 이름으로 값을 저장할 수 있다.	
+- 키라는 이름으로 값을 저장할 수 있다.
+
 ### 세션 꺼내오기
 ```java
 Object obj = session.getAttribute("x");
@@ -213,19 +214,37 @@ int y = (int)obj;
 ```
 - Object obj = <code>session.getAttribute(키)</code>;
 - 키로 데이터를 꺼내올 수 있으며, Object 타입으로 반환된다.
+  
 ### 세션 지우기
 - <code>session.removeAttribute(키)</code>
 - 키로 세션에 저장된 데이터를 삭제할 수 있다.
+  
 ### 세션 모두 지우기
 - <code>session.invalidate()</code>
 - 모든 세션을 삭제할 수 있다.
+
+### 세션 n초뒤 지우기
+```java
+String[] name = {"김철수", "이만수", "최영희", "박준범"};
+int[] score = {87, 100, 42, 98};
+
+session.setAttribute("name", name);
+session.setAttribute("score", score);
+
+// session에 저장된 데이터가 5초간 유지 후, 삭제된다.
+session.setMaxInactiveInterval(5);
+
+response.sendRedirect("_06_setTimePro.jsp");
+```
+- <code>session.setMaxInactiveInterval()</code>
+- session에 저장된 데이터가 n초간 유지 후, 삭제된다.
 
 ## Response
 ```java
 System.out.println("response");
 response.sendRedirect("_04_responseNext.jsp");
 ```
-- 페이지를 바로 이동할 때 response를 사용한다.
+- 페이지를 바로 이동할 때 <code>response.sendRedirect()</code>를 사용한다.
 
 ## form post 주의점
 ```html
@@ -245,3 +264,4 @@ response.sendRedirect("_04_responseNext.jsp");
 - form태그의 method속성 값을 post로 했을 경우, URL 경로에 input값이 암호화되어 표기가 안된다.
 - 아래처럼 다음 페이지에서는 인코딩 처리를 하지 않으면 한글은 깨진다.
 - request.setCharacterEncoding("UTF-8");
+
