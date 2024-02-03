@@ -19,6 +19,6 @@
 	<h2>x = <%=x%>, y = <%=y%></h2>
 	
 	<a href="_01_sessionPro1.jsp">이전페이지</a>
-	<a href="_01_sessionRemove.jsp">다음페이지</a>
+	<a href="_01_sessionRemove.jsp">세션하나지우기</a>
 </body>
 </html>
