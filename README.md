@@ -62,7 +62,7 @@
 
 ## Random
 - 지시자 태그를 사용해서 Random 클래스를 import한다. (= 자바와 동일)		
-- 자동완성 기능을 사용하면 import를 자동으로 작성해준다. <%@page import="java.util.Random"%>	
+- 자동완성 기능을 사용하면 import를 자동으로 작성해준다. <code><%@page import="java.util.Random"%></code>
 - 이처럼 지시자 태그는 처음 JSP 페이지를 셋팅할 때와 자바파일을 import할 때 사용한다.
 
 # 3. Request
@@ -202,8 +202,7 @@ int y = 20;
 session.setAttribute("x", x);
 session.setAttribute("y", y);
 ```
-- <code>session.setAttribute(키, 값)</code>;
-- 키라는 이름으로 값을 저장할 수 있다.
+- <code>session.setAttribute(키, 값)</code> 키라는 이름으로 값을 저장할 수 있다.
 
 ### 세션 꺼내오기
 ```java
@@ -212,12 +211,10 @@ int x = (int)obj;
 obj = session.getAttribute("y");
 int y = (int)obj;
 ```
-- Object obj = <code>session.getAttribute(키)</code>;
-- 키로 데이터를 꺼내올 수 있으며, Object 타입으로 반환된다.
+- Object obj = <code>session.getAttribute(키)</code> 키로 데이터를 꺼내올 수 있으며, Object 타입으로 반환된다.
   
 ### 세션 지우기
-- <code>session.removeAttribute(키)</code>
-- 키로 세션에 저장된 데이터를 삭제할 수 있다.
+- <code>session.removeAttribute(키)</code> 키로 세션에 저장된 데이터를 삭제할 수 있다.
   
 ### 세션 모두 지우기
 - <code>session.invalidate()</code>
@@ -236,8 +233,7 @@ session.setMaxInactiveInterval(5);
 
 response.sendRedirect("_06_setTimePro.jsp");
 ```
-- <code>session.setMaxInactiveInterval()</code>
-- session에 저장된 데이터가 n초간 유지 후, 삭제된다.
+- <code>session.setMaxInactiveInterval()</code> session에 저장된 데이터가 n초간 유지 후, 삭제된다.
 
 ## Response
 ```java
