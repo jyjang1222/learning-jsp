@@ -272,3 +272,24 @@ response.sendRedirect("_04_responseNext.jsp");
 ```
 - 페이지를 바로 이동할 때 <code>response.sendRedirect()</code>를 사용한다.
 
+# 6. Application
+- 당장은 사용할일이 잘 없다. 필요할때 찾아서 사용.
+## application.getServerInfo()
+- 서버정보가 출력된다.
+## application.getRealPath()
+- ()안에 경로를 추가로 입력할 수 있다. application.getRealPath("/img")
+## application.getContextPath()
+- 빨간글씨로 콘솔창에 출력된다.
+## application.log()
+- 프로젝트명이 출력된다.
+
+# 7. Out
+## out.println()
+```
+String name = "[자바에서 HTML을 출력할 수 있다.]";
+out.println("출력되는 내용은 <b>" + name + "</b> 입니다.");
+  
+<h2>위와 같은 내용 출력</h2> 
+출력되는 내용은 <b><%=name %></b> 입니다.
+```
+- 자바에서 html태그를 사용가능하다. 현재는 쓰이지 않는 메서드이다.
