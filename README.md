@@ -65,7 +65,7 @@
 - 자동완성 기능을 사용하면 import를 자동으로 작성해준다. <%@page import="java.util.Random"%>	
 - 이처럼 지시자 태그는 처음 JSP 페이지를 셋팅할 때와 자바파일을 import할 때 사용한다.
 
-# 3. jsp Request
+# 3. Request
 ## form 데이터 입력 페이지
 ```html
 <form method="post" action="_01_requestPro.jsp">
@@ -190,3 +190,32 @@
 
 <button onclick="window.location.href='_10_buttonPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>'">전송</button>
 ```
+
+# 4. Session
+- session은 request와 달리 브라우저가 실행되는 동안 처음부터 끝까지 데이터가 유지된다.
+
+## 세션 저장하기
+```java
+int x = 10;
+int y = 20;
+
+session.setAttribute("x", x);
+session.setAttribute("y", y);
+```
+- <code>session.setAttribute(키, 값)</code>;
+- 키라는 이름으로 값을 저장할 수 있다.	
+## 세션 꺼내오기
+```java
+Object obj = session.getAttribute("x");
+int x = (int)obj;
+obj = session.getAttribute("y");
+int y = (int)obj;
+```
+- Object obj = <code>session.getAttribute(키)</code>;
+- 키로 데이터를 꺼내올 수 있으며, Object 타입으로 반환된다.
+## 세션 지우기
+- <code>session.removeAttribute(키)</code>
+- 키로 세션에 저장된 데이터를 삭제할 수 있다.
+## 세션 모두 지우기
+- <code>session.invalidate()</code>
+- 모든 세션을 삭제할 수 있다.
