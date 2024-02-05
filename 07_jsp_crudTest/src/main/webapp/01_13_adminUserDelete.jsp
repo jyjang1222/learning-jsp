@@ -13,28 +13,19 @@
 		Object obj = session.getAttribute("userDB");
 		ArrayList<Map<String, String>> userDB = (ArrayList<Map<String, String>>)obj;
 		
-		String userId = (String)session.getAttribute("log");
-		String userPw = request.getParameter("userPw");
-		
-		boolean checkPw = false;
+		String userId = request.getParameter("userId");
 		int removeIdx = 0;
 		
-		// 비번 체크
 		for (int i = 0; i < userDB.size(); i++) {
 			Map<String, String> user = userDB.get(i);
-			if (user.get("userId").equals(userId) && user.get("userPw").equals(userPw)) {
-				checkPw = true;
+			if (user.get("userId").equals(userId)) {
 				removeIdx = i;
 			}
 		}
 		
-		if (checkPw) {
-			userDB.remove(removeIdx);
-			session.removeAttribute("log");
-			response.sendRedirect("02_main.jsp");
-		} else {
-			response.sendRedirect("03_41_deleteForm.jsp");
-		}
+		userDB.remove(removeIdx);
+		
+		response.sendRedirect("01_12_adminUserList.jsp");
 	%>
 </body>
 </html>

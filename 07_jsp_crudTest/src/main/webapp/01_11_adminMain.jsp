@@ -10,8 +10,8 @@
 	<h1>관리자 페이지</h1>
 	<table>
 		<tr>
-			<td><a href="">로그아웃</a></td>
-			<td><a href="">회원관리</a></td>
+			<td><a href="03_23_logoutPro.jsp">로그아웃</a></td>
+			<td><a href="01_12_adminUserList.jsp">회원관리</a></td>
 		</tr>
 	</table>
 </body>
