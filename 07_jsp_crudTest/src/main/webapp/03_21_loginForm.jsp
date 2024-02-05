@@ -16,12 +16,13 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="userPw" value="1111"></td>
+				<td><input type="password" name="userPw" value="1234"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="로그인"></td>
 			</tr>
 		</table>
 	</form>
+	<a href="02_main.jsp">메인으로</a>
 </body>
 </html>

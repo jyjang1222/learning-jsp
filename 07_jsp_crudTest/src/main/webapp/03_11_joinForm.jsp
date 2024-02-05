@@ -12,20 +12,20 @@
 		<table border="1">
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="userId"></td>
+				<td><input type="text" name="userId" value="apple" required></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="userPw"></td>
+				<td><input type="password" name="userPw" value="1234" required></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="userName"></td>
+				<td><input type="text" name="userName" value="준" required></td>
 			</tr>
 			<tr>
 				<td>성별</td>
 				<td>
-					<input type="radio" name="userGender" value="남성">남성
+					<input type="radio" name="userGender" value="남성" checked>남성
 					<input type="radio" name="userGender" value="여성">여성
 				</td>
 			</tr>

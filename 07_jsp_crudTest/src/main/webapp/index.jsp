@@ -7,7 +7,7 @@
 <%
 	// 3명의 회원 샘플데이터 저장
 	String[] sampleId = {"qwer", "asdf", "hello"};
-	String[] samplePw = {"1111", "2222", "3333"};
+	String[] samplePw = {"1234", "1234", "1234"};
 	String[] sampleName = {"이만수", "박영희", "이수민"};
 	String[] sampleGender = {"남성", "여성", "여성"};
 	
@@ -21,11 +21,6 @@
 		user.put("userName", sampleName[i]);
 		user.put("userGender", sampleGender[i]);
 		userDB.add(user);
-	}
-	
-	// 회원 출력
-	for (Map<String, String> user : userDB) {
-		System.out.println(user);
 	}
 
 	// 로그인 상태를 확인할 수 있는 log변수 세션에 저장
