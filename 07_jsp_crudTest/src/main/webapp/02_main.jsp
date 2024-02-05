@@ -29,7 +29,7 @@
 			<% } else { %>
 			<td><a href="03_23_logoutPro.jsp">로그아웃</a></td>
 			<td><a href="03_31_updateForm.jsp">회원정보수정</a></td>
-			<td><a href="">회원탈퇴</a></td>
+			<td><a href="03_41_deleteForm.jsp">회원탈퇴</a></td>
 			<% } %>
 		</tr>
 	</table>

@@ -13,24 +13,24 @@
 		Object obj = session.getAttribute("userDB");
 		ArrayList<Map<String, String>> userDB = (ArrayList<Map<String, String>>)obj;
 		
-		String id = request.getParameter("userId");
-		String pw = request.getParameter("userPw");
+		String userId = request.getParameter("userId");
+		String userPw = request.getParameter("userPw");
 		
 		// 관리자일 경우
-		if (id.equals("admin") && pw.equals("admin")) {
+		if (userId.equals("admin") && userPw.equals("admin")) {
 			response.sendRedirect("01_11_adminMain.jsp");
 		} else { // 일반 사용자일 경우
 			boolean checkLogin = false;
 			
 			// 로그인 체크
 			for (Map<String, String> user : userDB) {
-				if (user.get("userId").equals(id) && user.get("userPw").equals(pw)) {
+				if (user.get("userId").equals(userId) && user.get("userPw").equals(userPw)) {
 					checkLogin = true;
 				}
 			}
 			
 			if (checkLogin) {
-				session.setAttribute("log", id);
+				session.setAttribute("log", userId);
 				// 세션의 유효시간을 100분으로 설정
 				session.setMaxInactiveInterval(60 * 100);
 				
