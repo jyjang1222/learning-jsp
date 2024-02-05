@@ -84,7 +84,8 @@
 - input 태그
 	- name="age" : age변수에 input에 입력된 내용을 저장한다.
 
-## request.getParameter()
+## request메서드
+### request.getParameter()
 ```java
 String str = request.getParameter("age");
 int age = Integer.parseInt(str);
@@ -97,7 +98,7 @@ int age = Integer.parseInt(str);
 		- 모든 내용은 문자열로 변환된다, 만약 값이 정수라면, 변환해서 사용한다.
 	- int age = Integer.parseInt(strAge);
 
-## request.setCharacterEncoding("UTF-8")
+### request.setCharacterEncoding("UTF-8")
 ```html
 <form method="post" action="_05_formPostPro.jsp">
 	이름 : <input type="text" name="name">
@@ -115,7 +116,7 @@ String name = request.getParameter("name");
 - 아래처럼 다음 페이지에서는 인코딩 처리를 하지 않으면 한글은 깨진다.
 - <code>request.setCharacterEncoding("UTF-8")</code>;
 
-## request.getParameterValues()
+### request.getParameterValues()
 ```html
 <tr>
 	<td> 선택과목</td>
@@ -148,7 +149,6 @@ String[] hobbyList = request.getParameterValues("hobby");
 
 String memo = request.getParameter("memo");
 ```
-### radio, checkbox, textarea
 - input태그의 type속성 값으로 radio와 checkbox는 반드시 같은 name속성을 지정해야 한다.
 - textarea는 value 속성이 없지만 <textarea></textarea> 사이의 내용을 value로 인식한다.
 	- <textarea></textarea> 사이에는 칸을 띄우거나 줄을 바꾸지 않도록 주의한다.
@@ -186,12 +186,12 @@ int userInput = Integer.parseInt(request.getParameter("userInput"));
 ```
 - 다음 페이지에서 필요한 데이터는 <code>input type="hidden"</code> 속성을 이용해 데이터를 전달할 수 있다
 
-# 4. 데이터를 다른 JSP 페이지로 전달하는 방법 3가지
+## 데이터를 다른 JSP 페이지로 전달하는 방법 3가지
 1. form   : action="next.jsp"과 submit버튼
 2. a      : href="next.jsp"
 3. button : onclick="window.location.href='next.jsp'"
 
-## form
+### form
 ```html
 int x = 10;
 int y = 20;
@@ -203,7 +203,7 @@ int y = 20;
 	<input type="submit" value="전송">
 </form>
 ```
-## a
+### a
 ```html
 int x = 10;
 int y = 20;
@@ -211,7 +211,7 @@ int z = 30;
 
 <a href="_09_aTagPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>">다음페이지</a>
 ```
-## button onclick="window.location.href=''"
+### button onclick="window.location.href=''"
 ```html
 int x = 10;
 int y = 20;
@@ -220,9 +220,9 @@ int z = 30;
 <button onclick="window.location.href='_10_buttonPro.jsp?x=<%=x%>&y=<%=y%>&z=<%=z%>'">전송</button>
 ```
 
-# 5. Session
+# 4. Session
 - session은 request와 달리 브라우저가 실행되는 동안 처음부터 끝까지 데이터가 유지된다.
-## 세션 메서드
+## session 메서드
 ### session.setAttribute(key, value)
 ```java
 int x = 10;
@@ -265,7 +265,8 @@ response.sendRedirect("_06_setTimePro.jsp");
 - <code>session.setMaxInactiveInterval()</code> session에 저장된 데이터가 n초간 유지 후, 삭제된다.
 
 # 5. Response
-## response.sendRedirect()
+## response 메서드
+### response.sendRedirect()
 ```java
 System.out.println("response");
 response.sendRedirect("_04_responseNext.jsp");
@@ -274,17 +275,18 @@ response.sendRedirect("_04_responseNext.jsp");
 
 # 6. Application
 - 당장은 사용할일이 잘 없다. 필요할때 찾아서 사용.
-## application.getServerInfo()
+### application.getServerInfo()
 - 서버정보가 출력된다.
-## application.getRealPath()
+### application.getRealPath()
 - ()안에 경로를 추가로 입력할 수 있다. application.getRealPath("/img")
-## application.getContextPath()
+### application.getContextPath()
 - 빨간글씨로 콘솔창에 출력된다.
-## application.log()
+### application.log()
 - 프로젝트명이 출력된다.
 
 # 7. Out
-## out.println()
+## out 메서드
+### out.println()
 ```
 String name = "[자바에서 HTML을 출력할 수 있다.]";
 out.println("출력되는 내용은 <b>" + name + "</b> 입니다.");
