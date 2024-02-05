@@ -27,7 +27,7 @@
 	for (Map<String, String> user : userDB) {
 		System.out.println(user);
 	}
-	
+
 	// 로그인 상태를 확인할 수 있는 log변수 세션에 저장
 	session.setAttribute("log", null);
 	

@@ -12,11 +12,11 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="userId" value="admin"></td>
+				<td><input type="text" name="userId" value="qwer"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="userPw" value="admin"></td>
+				<td><input type="password" name="userPw" value="1111"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="로그인"></td>
