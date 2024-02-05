@@ -9,6 +9,8 @@
 <body>
 	<%
 		session.removeAttribute("log");
+	
+		response.sendRedirect("02_main.jsp");
 	%>
 </body>
 </html>

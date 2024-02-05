@@ -6,7 +6,7 @@
 
 <%
 	// 3명의 회원 샘플데이터 저장
-	String[] sampleId = {"qwer", "abcd", "hello"};
+	String[] sampleId = {"qwer", "asdf", "hello"};
 	String[] samplePw = {"1111", "2222", "3333"};
 	String[] sampleName = {"이만수", "박영희", "이수민"};
 	String[] sampleGender = {"남성", "여성", "여성"};
