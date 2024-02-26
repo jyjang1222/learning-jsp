@@ -46,8 +46,6 @@
 					session.invalidate();
 					response.sendRedirect("00_main.jsp");
 				} else {
-					out.println(id);
-					out.println(pw);
 					out.println("패스워드를 확인해주세요.<br>");
 					out.println("<a href=\"00_main.jsp\">메인</a>");
 				}
