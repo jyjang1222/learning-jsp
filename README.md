@@ -8,6 +8,7 @@
 6. [Application](#6-Application)
 7. [Out](#7-Out)
 8. [Include](#8-Include)
+9. [DB연결](#9-DB연결)
 
 # 0. JSP (Java Server Page) 설치
 1. JDK : 자바언어 설치
@@ -325,3 +326,51 @@ out.println("출력되는 내용은 <b>" + name + "</b> 입니다.");
 <%-- bottom --%>
 <jsp:include page="_02_bottom.jsp" />
 ```
+
+# 9. DB연결
+
+```java
+Connection conn = null; // db연결용
+PreparedStatement pstmt = null; // 쿼리문 실행용
+
+try {
+	// jsp_00_01_crud_mysql가 db명
+	String jdbcUrl = "jdbc:mysql://localhost:3306/jsp_00_01_crud_mysql?serverTimezone=UTC&useSSL=false";
+	String dbId = "root";
+	String dbPw = "root";
+	
+	Class.forName("com.mysql.cj.jdbc.Driver"); // WEB-INF/lib에 있는 드라이버파일 로드
+	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPw); // 3개의 인자 작성
+	
+	String sql = "INSERT INTO member VALUES(?, ?, ?, NOW())"; // 무슨 값이 들어 올지 모르므로 인자를 ?로 작성
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, id); // 순서대로 ?에 데이터 입력, 1부터시작
+	pstmt.setString(2, pw);
+	pstmt.setString(3, name);
+	pstmt.executeUpdate(); // 쿼리문 실행
+	
+	conn.close();
+	pstmt.close();
+} catch(Exception e) {
+	e.printStackTrace();
+}
+```
+## 사전준비
+- 준비파일 : mysql연결 드라이버
+- DB연결 주소 : jdbc:mysql://localhost:3306/MySQL 데이터베이스 이름?serverTimezone=UTC&useSSL=false";
+- 드라이버 파일 경로 : /src/main/webapp/WEB-INF/lib
+- 드라이버파일 로드 : Class.forName("com.mysql.cj.jdbc.Driver")
+
+## Connection
+- DB연결하기 위한 클래스
+### prepareStatement(query)
+- 실행할 쿼리문 설정
+## PreparedStatement
+- 쿼리문 실행하기위한 클래스
+### setString(idx, arg), setInt(idx, arg) 등
+- 쿼리문에 인자 입력
+- **인덱스 1**로 시작
+### executeQuery()
+- SELECT
+### executeUpdate()
+- SELECT를 제외한 나머지 명령어
