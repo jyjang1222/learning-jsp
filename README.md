@@ -340,18 +340,19 @@ try {
 	String dbId = "root";
 	String dbPw = "root";
 
-	// 3. jdbc 드라이버 로드, Connection변수에 db주소, id, pw 인자 전달
+	// 3. jdbc 드라이버 로드
 	Class.forName("com.mysql.cj.jdbc.Driver");
+	// 4. Connection변수에 db주소, id, pw 인자 전달
 	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPw);
 
-	// 4. PreparedStatement변수에 쿼리문 인자 전달
+	// 5. PreparedStatement변수에 쿼리문 인자 전달
 	String sql = "INSERT INTO member VALUES(?, ?, ?, NOW())"; // 무슨 값이 들어 올지 모르므로 인자를 ?로 작성
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, id); // 순서대로 ?에 데이터 입력, 1부터시작
 	pstmt.setString(2, pw);
 	pstmt.setString(3, name);
 	pstmt.executeUpdate(); // 쿼리문 실행
-	// 5. close()로 종료
+	// 6. close()로 종료
 	conn.close();
 	pstmt.close();
 } catch(Exception e) {
@@ -364,11 +365,11 @@ try {
 - jdbc드라이버 파일 경로 : /src/main/webapp/WEB-INF/lib
 - jdbc드라이버 파일 로드 : Class.forName("com.mysql.cj.jdbc.Driver")
 
-## Connection (DB연결하기 위한 클래스)
+## Connection (DB연결 클래스)
 ### prepareStatement(query)
 - 실행할 쿼리문 설정
 
-## PreparedStatement (쿼리문 실행하기위한 클래스)
+## PreparedStatement (쿼리문 실행 클래스)
 ### setString(idx, arg), setInt(idx, arg) 등
 - 쿼리문에 인자 입력
 - **인덱스 1**로 시작
@@ -379,3 +380,4 @@ try {
 
 ## DriverManager
 ### getConnection(jdbcUrl, dbId, dbPw)
+- Connection변수에 db주소, id, pw 인자 전달
