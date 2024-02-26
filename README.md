@@ -381,3 +381,11 @@ try {
 ## DriverManager
 ### getConnection(jdbcUrl, dbId, dbPw)
 - Connection변수에 db주소, id, pw 인자 전달
+
+## Resultset (결과 저장 클래스)
+### next()
+- row가 하나이상 존재하면 true
+- row의 개수에 따라 if문(column 하나), while문(column 여러개)을 결정하게 된다.
+### getInt(column idx OR column label), getString() 등
+- 인자로 column인덱스나 column라벨을 전달
+- **인덱스 1**로 시작
