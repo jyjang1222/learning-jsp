@@ -328,6 +328,11 @@ out.println("출력되는 내용은 <b>" + name + "</b> 입니다.");
 ```
 
 # 9. DB연결
+## 사전준비
+- 준비파일 : mysql연결 드라이버
+- DB연결 주소 : jdbc:mysql://localhost:3306/MySQL 데이터베이스 이름?serverTimezone=UTC&useSSL=false";
+- jdbc드라이버 파일 경로 : /src/main/webapp/WEB-INF/lib
+- jdbc드라이버 파일 로드 : Class.forName("com.mysql.cj.jdbc.Driver")
 
 ```java
 // 1. Connection, PreparedStatement 변수 선언
@@ -359,11 +364,6 @@ try {
 	e.printStackTrace();
 }
 ```
-## 사전준비
-- 준비파일 : mysql연결 드라이버
-- DB연결 주소 : jdbc:mysql://localhost:3306/MySQL 데이터베이스 이름?serverTimezone=UTC&useSSL=false";
-- jdbc드라이버 파일 경로 : /src/main/webapp/WEB-INF/lib
-- jdbc드라이버 파일 로드 : Class.forName("com.mysql.cj.jdbc.Driver")
 
 ## Connection (DB연결 클래스)
 ### prepareStatement(query)
@@ -382,7 +382,29 @@ try {
 ### getConnection(jdbcUrl, dbId, dbPw)
 - Connection변수에 db주소, id, pw 인자 전달
 
-## Resultset (결과 저장 클래스)
+## ResultSet (결과 저장 클래스)
+```sql
+ResultSet res = null;
+
+String sql = "SELECT COUNT(*) FROM member WHERE id=? AND pw=?";
+pstmt = conn.prepareStatement(sql);
+pstmt.setString(1, id);
+pstmt.setString(2, pw);
+res = pstmt.executeQuery();
+
+if (res.next()) {
+	int result = res.getInt(1);
+	
+	if (result == 1) {
+		session.setAttribute("log", id);
+		out.println("result = " + result + "<br>");
+	} else {
+		out.println("아이디와 패스워드를 확인해주세요.<br>");
+	}
+}
+
+res.close();
+```
 ### next()
 - row가 하나이상 존재하면 true
 - row의 개수에 따라 if문(column 하나), while문(column 여러개)을 결정하게 된다.
