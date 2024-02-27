@@ -366,27 +366,24 @@ try {
 }
 ```
 
-## Connection
-### DB연결 하기
-#### prepareStatement(query)
+## Connection DB연결 하기
+### prepareStatement(query)
 - 실행할 쿼리문 설정
 
-## PreparedStatement
-### 쿼리문 실행 하기
-#### setString(idx, arg), setInt(idx, arg) 등
+## PreparedStatement 쿼리문 실행 하기
+### setString(idx, arg), setInt(idx, arg) 등
 - 쿼리문에 인자 입력
 - **인덱스 1**로 시작
-#### executeQuery()
+### executeQuery()
 - SELECT
-#### executeUpdate()
+### executeUpdate()
 - SELECT를 제외한 나머지 명령어
 
 ## DriverManager
 ### getConnection(jdbcUrl, dbId, dbPw)
 - Connection변수에 db주소, id, pw 인자 전달
 
-## ResultSet
-### 결과 저장 하기
+## ResultSet 결과 저장 하기
 ```sql
 ResultSet res = null;
 
@@ -409,10 +406,10 @@ if (res.next()) {
 
 res.close();
 ```
-#### next()
+### next()
 - row가 하나이상 존재하면 true
 - row의 개수에 따라 if문(column 하나), while문(column 여러개)을 결정하게 된다.
-#### getInt(column idx OR column label), getString() 등
+### getInt(column idx OR column label), getString() 등
 - 인자로 column인덱스나 column라벨을 전달
 - **인덱스 1**로 시작
 
