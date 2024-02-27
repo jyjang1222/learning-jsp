@@ -16,5 +16,6 @@
 		
 		<input type="submit" value="입력완료">
 	</form>
+	<a href="00_main.jsp">메인</a>
 </body>
 </html>

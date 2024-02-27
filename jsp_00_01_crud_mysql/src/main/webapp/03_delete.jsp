@@ -12,5 +12,6 @@
 		패스워드 : <input type="password" name="pw"> <br>
 		<input type="submit" value="입력완료">
 	</form>
+	<a href="00_main.jsp">메인</a>
 </body>
 </html>
