@@ -44,8 +44,8 @@
 				String regDate = sdf.format(res.getDate("reg_date"));
 				
 				user.put("id", id);
-				user.put("pw", id);
-				user.put("name", id);
+				user.put("pw", pw);
+				user.put("name", name);
 				user.put("regDate", regDate);
 				
 				userList.add(user);
