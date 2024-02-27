@@ -330,7 +330,7 @@ out.println("출력되는 내용은 <b>" + name + "</b> 입니다.");
 # 9. DB연결
 ## 사전준비
 - 준비파일 : mysql연결 드라이버
-- DB연결 주소 : jdbc:mysql://localhost:3306/MySQL 데이터베이스 이름?serverTimezone=UTC&useSSL=false";
+- DB연결 주소 : jdbc:mysql://localhost:3306/MySQL 데이터베이스 이름?serverTimezone=UTC&useSSL=false
 - jdbc드라이버 파일 경로 : /src/main/webapp/WEB-INF/lib
 - jdbc드라이버 파일 로드 : Class.forName("com.mysql.cj.jdbc.Driver")
 
