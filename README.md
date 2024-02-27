@@ -411,3 +411,54 @@ res.close();
 ### getInt(column idx OR column label), getString() 등
 - 인자로 column인덱스나 column라벨을 전달
 - **인덱스 1**로 시작
+
+## TimeStamp
+- 일반적으로 jsp에서 SQL 날짜 데이터를 다룰 때는 java.sql.Timestamp를 사용한다.
+### 데이터베이스에서 데이터 가져오기
+```java
+ResultSet rs = statement.executeQuery("SELECT * FROM my_table");
+while (rs.next()) {
+    Timestamp timestamp = rs.getTimestamp("my_timestamp_column");
+    // timestamp 변수를 사용하여 날짜 및 시간 데이터 처리
+}
+rs.close();
+```
+### 데이터베이스에 데이터 보내기
+```java
+Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+PreparedStatement pstmt = connection.prepareStatement("INSERT INTO my_table (my_timestamp_column) VALUES (?)");
+pstmt.setTimestamp(1, timestamp);
+pstmt.executeUpdate();
+pstmt.close();
+```
+
+## ResultSet, Timestamp를 통해 날짜 데이터 가져올 때 차이점
+### ResultSet을 사용하는 경우
+- ResultSet를 사용하여 SQL 날짜 데이터를 가져올 때는 <code>getDate()</code> 또는 <code>getTime()</code> 등의 메서드를 사용하여 날짜와 시간을 가져올 수 있다.
+- 이 경우에는 ResultSet에서 직접 날짜를 가져오기 때문에 Timestamp 객체를 따로 생성할 필요가 없다.
+- ResultSet를 사용하여 날짜를 가져올 때는 데이터베이스에서 반환되는 **타임존 정보**가 고려되지 않으므로 주의해야 한다.
+### Timestamp를 사용하는 경우
+- Timestamp 클래스를 사용하여 SQL 날짜 데이터를 가져오면, ResultSet에서 가져온 값을 Timestamp 객체로 명시적으로 변환해야 한다.
+- Timestamp 클래스를 사용하면 데이터베이스에서 반환되는 타임존 정보를 보다 잘 처리할 수 있다.
+- Timestamp 객체에는 날짜와 시간을 저장할 뿐만 아니라 타임존 정보도 포함된다.
+
+# 10. jsp액션 태그
+```html
+<jsp:useBean  id ="member" class="model.Member"></jsp:useBean>		
+(1) 위 한줄은 아래와 같다.
+Member member = new Member(); 
+
+<jsp:setProperty name="member" property="*"/>		
+(2) 위 한줄은 아래와 같다. 
+member.setId(request.getParameter("id"));
+member.setPw(request.getParameter("pw"));
+member.setName(request.getParameter("name"));
+
+(3) 사용법
+<jsp:useBean id="member" class="basic.MemberDTO">
+	<jsp:setProperty name="member" property="*" />
+</jsp:useBean>
+
+<p>아이디 : <%= member.getId() %></p>
+<p>비밀번호 : <%= member.getPw() %></p>
+```
