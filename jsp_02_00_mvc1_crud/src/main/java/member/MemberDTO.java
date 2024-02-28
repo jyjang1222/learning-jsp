@@ -2,7 +2,7 @@ package member;
 
 import java.sql.Timestamp;
 
-public class memberDTO {
+public class MemberDTO {
 	
 	private String id;
 	private String pw;
