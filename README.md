@@ -445,7 +445,8 @@ pstmt.close();
 
 # 10. jsp액션 태그
 ```html
-<jsp:useBean  id ="member" class="model.Member"></jsp:useBean>		
+// id는 변수명, class에는 패키지명 + 클래스명
+<jsp:useBean id="member" class="model.Member"></jsp:useBean>		
 (1) 위 한줄은 아래와 같다.
 Member member = new Member(); 
 
