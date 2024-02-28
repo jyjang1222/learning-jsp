@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class MemberDAO {
 	
@@ -28,6 +29,8 @@ public class MemberDAO {
 	}
 	
 	public int insertMember(MemberDTO member) {
+		Timestamp registeredDate = new Timestamp(System.currentTimeMillis());
+		member.setRegisteredDate(registeredDate);
 		int result = -1;
 		
 		try {
@@ -38,6 +41,7 @@ public class MemberDAO {
 			pstmt.setString(1, member.getId());
 			rs = pstmt.executeQuery();
 			
+			// 아이디 중복 확인
 			if (rs.next()) {
 				result = rs.getInt(1);
 				if (result == 0) {
