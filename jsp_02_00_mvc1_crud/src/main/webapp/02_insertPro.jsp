@@ -20,9 +20,15 @@
 	
 	<%
 		int result = MemberDAO.getInstance().insertMember(member);
+		String msg = "가입 완료";
+		
+		if (result == 1) {
+			msg = "중복된 아이디입니다";
+		}
 	
 		out.println("result = " + result + "<br>");
 	%>
+	<p><%= msg %></p>
 	<a href="00_main.jsp">메인</a>
 </body>
 </html>

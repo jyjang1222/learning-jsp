@@ -44,6 +44,7 @@ public class MemberDAO {
 			// 아이디 중복 확인
 			if (rs.next()) {
 				result = rs.getInt(1);
+				
 				if (result == 0) {
 					sql = "INSERT INTO member VALUES(?, ?, ?, ?)";
 					pstmt = conn.prepareStatement(sql);
@@ -52,8 +53,6 @@ public class MemberDAO {
 					pstmt.setString(3, member.getName());
 					pstmt.setTimestamp(4, member.getRegisteredDate());
 					pstmt.executeUpdate();
-				} else {
-					result = -1;
 				}
 			}
 		} catch (Exception e) {
@@ -67,4 +66,62 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int deleteMember(String id, String pw) {
+		int result = -1;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM member WHERE id=? AND pw=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+				
+				if (result == 1) {
+					sql = "DELETE FROM member WHERE id=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.executeUpdate();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {try {conn.close();} catch (SQLException e) {}}
+			if (pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+			if (rs != null) {try {rs.close();} catch (SQLException e) {}}
+		}
+		
+		return result;
+	}
+	
+	public int login(String id, String pw) {
+		int result = -1;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT COUNT(*) FROM member WHERE id=? AND pw=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {try {conn.close();} catch (SQLException e) {}}
+			if (pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+			if (rs != null) {try {rs.close();} catch (SQLException e) {}}
+		}
+		
+		return result;
+	}
 }
