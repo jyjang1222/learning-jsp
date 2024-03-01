@@ -472,24 +472,24 @@ member.setName(request.getParameter("name"));
 3. jsp x board (댓글)
 
 ## 댓글 변수
-. ref	글 그룹
-. reDepth	글 깊이(단계)
-. reLevel	같은 글 그룹의 순서(정렬)
+- **ref**	글 그룹
+- **reDepth**	글 깊이(단계)
+- **reLevel**	같은 글 그룹의 순서(정렬)
 
-[1] 새 글
-. ref	최대 ref값 + 1
-. reDepth	1
-. reLevel	1
 
-[2] 댓글
-. ref	클릭한 게시글의 ref값 그대로 따름
-. reDepth	클릭한 게시글의 reDepth + 1
-. reLevel	클릭한 게시글의 reLevel + 1
-             추가조건) 클릭한 게시글의 reLevel값 보다 크거나 같은
-		 게시글이 있으면 모두 reLevel + 1
+1. 새 글
+- **ref**	최대 ref값 + 1
+- **reDepth**	1
+- **reLevel**	1
 
-[3] 정렬(최신글 순으로)
-. ref	내림차순 정렬
-. reLevel	오름차순 정렬
+2. 댓글
+- **ref**	클릭한 게시글의 ref값 그대로 따름
+- **reDepth**	클릭한 게시글의 reDepth + 1
+- **reLevel**	클릭한 게시글의 reLevel + 1
+- 추가조건 : 클릭한 게시글의 reLevel값 보다 크거나 같은게시글이 있으면 모두 reLevel + 1
+
+3. 정렬(최신글 순으로)
+- **ref**	내림차순 정렬
+- **reLevel**	오름차순 정렬
 
 <img src="https://supercodemother.com/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F88f90185-6553-4902-b3fc-a1051a5b9b56%2F0a1e4bed-ca97-44c4-b286-6188b8b0fca1%2Fjsp_02_02_mvc1_board_%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580.png?table=block&id=0b86f883-ab7f-44e0-8e40-5385dff5fb11&spaceId=88f90185-6553-4902-b3fc-a1051a5b9b56&width=1100&userId=&cache=v2" width="500" height="auto">
