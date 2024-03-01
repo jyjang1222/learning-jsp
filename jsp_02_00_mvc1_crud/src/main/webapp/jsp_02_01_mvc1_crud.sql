@@ -18,7 +18,7 @@ INSERT INTO member VALUES ('test', '1111', '민서희', now());
 SELECT * FROM member;
 SELECT COUNT(*) FROM member WHERE id='abcd' AND pw='1234';
 
-DELETE FROM member WHERE id='test';
+DELETE FROM member WHERE id='test2';
 
 UPDATE member SET name='최여신' WHERE id='hello'; 
 

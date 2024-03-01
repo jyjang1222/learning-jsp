@@ -1,6 +1,4 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,10 +9,14 @@
 </head>
 <body>
 	<% request.setCharacterEncoding("UTF-8"); %>
-	<%
-		String id = String.valueOf(session.getAttribute("log"));
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
+	
+	<jsp:useBean id="member" class="member.MemberDTO">
+		<jsp:setProperty property="*" name="member"/>
+	</jsp:useBean>
+	
+	<% 
+		MemberDAO.getInstance().updateMember(member);
+		response.sendRedirect("00_main.jsp");
 	%>
 </body>
 </html>
