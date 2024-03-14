@@ -10,7 +10,7 @@
 8. [Include](#8-Include)
 9. [DB연결](#9-DB연결)
 10. [jsp액션 태그](#10-jsp액션-태그)
-11. [게시판 알고리즘](#11-게시판-알고리즘)
+11. [Servlet](#11-Servlet)
 
 # 0. JSP (Java Server Page) 설치
 1. JDK : 자바언어 설치
@@ -465,3 +465,13 @@ member.setName(request.getParameter("name"));
 <p>아이디 : <%= member.getId() %></p>
 <p>비밀번호 : <%= member.getPw() %></p>
 ```
+
+# 11. Servlet
+- 기존(MVC1) : join.jsp -> joinPro.jsp
+- 기존(MVC2) : join.jsp -> 웹기술을 갖춘 자바파일(Servlet) 이동
+
+## 서블릿 파일 생성
+<img src="https://github.com/jyjang1222/learning-jsp/assets/89000811/c945e49f-8250-452b-92c8-bca87cf429c7" alt="">
+
+- 생성한 클래스가 자동으로 HttpServlet클래스를 상속받는다
+- 파일명은 접미사로 **Action**을 붙여준다
