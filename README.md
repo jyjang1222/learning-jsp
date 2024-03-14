@@ -475,6 +475,7 @@ member.setName(request.getParameter("name"));
 ## 서블릿 파일 생성
 <img src="https://github.com/jyjang1222/learning-jsp/assets/89000811/c945e49f-8250-452b-92c8-bca87cf429c7" alt="">
 
+### jsp파일
 ```html
 <form action="JoinAction" method="post">
 	이름 : <input type="text" name="name">
@@ -487,6 +488,8 @@ member.setName(request.getParameter("name"));
 <h2>이름 : ${ name }</h2>
 <h2>나이 : ${ age }</h2>
 ```
+
+### 서블릿 파일
 ```java
 // @WebServlet은 페이지 주소명 역할 (페이지명 앞에 반드시 / 작성)
 @WebServlet("/JoinAction")
