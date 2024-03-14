@@ -467,11 +467,56 @@ member.setName(request.getParameter("name"));
 ```
 
 # 11. Servlet
-- 기존(MVC1) : join.jsp -> joinPro.jsp
-- 기존(MVC2) : join.jsp -> 웹기술을 갖춘 자바파일(Servlet) 이동
+- 페이지 이동 방법
+	- MVC1 : join.jsp -> joinPro.jsp
+	- MVC2 : join.jsp -> JoinAction.java (Servlet) 이동
+- 서블릿(Servlet)이란 HttpServelt 클래스를 상속받은 자바파일
 
 ## 서블릿 파일 생성
 <img src="https://github.com/jyjang1222/learning-jsp/assets/89000811/c945e49f-8250-452b-92c8-bca87cf429c7" alt="">
+```html
+<form action="JoinAction" method="post">
+	이름 : <input type="text" name="name">
+	나이 : <input type="text" name="age">
+	<input type="submit" value="회원가입">
+</form>
+```
+```html
+<!-- joinPro.jsp -->
+<h2>이름 : ${ name }</h2>
+<h2>나이 : ${ age }</h2>
+```
+```java
+// @WebServlet은 페이지 주소명 역할 (페이지명 앞에 반드시 / 작성)
+@WebServlet("/JoinAction")
+public class JoinAction extends HttpServlet {
+//	get, post를 따로 분리해서 코드를 작성하면 가독성이 떨어지니 하나로 몰아서 작성한다
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		reqPro(request, response);
+	}
 
-- 생성한 클래스가 자동으로 HttpServlet클래스를 상속받는다
-- 파일명은 접미사로 **Action**을 붙여준다
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		reqPro(request, response);
+	}
+
+	// 기존의 joinPro.jsp 코드들을 그대로 서블릿 파일에 작성해주면 된다.
+	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
+		// jsp페이지에서 전달한 데이터를 저장
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
+		
+		// 서블릿 에서 처리한 데이터를 jsp페이지로 이동
+		request.setAttribute("name", name);
+		request.setAttribute("name", age);
+  		
+		// 서블릿 페이지에서 jsp 페이지로 이동
+		RequestDispatcher rd = request.getRequestDispatcher("joinPro.jsp");
+		rd.forward(request, response);
+	}
+}
+```
+- 생성한 클래스가 자동으로 HttpServlet클래스를 상속받는다.
+- 파일명은 접미사로 **Action**을 붙여준다.
+- HttpServelt 클래스는 웹을 개발하기위한 다양한 기술을 포함하고 있다.
