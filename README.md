@@ -483,11 +483,6 @@ member.setName(request.getParameter("name"));
 	<input type="submit" value="회원가입">
 </form>
 ```
-```html
-<!-- joinPro.jsp -->
-<h2>이름 : ${ name }</h2>
-<h2>나이 : ${ age }</h2>
-```
 
 ### 서블릿 파일
 ```java
@@ -524,3 +519,58 @@ public class JoinAction extends HttpServlet {
 - 생성한 클래스가 자동으로 HttpServlet클래스를 상속받는다.
 - 파일명은 접미사로 **Action**을 붙여준다.
 - HttpServelt 클래스는 웹을 개발하기위한 다양한 기술을 포함하고 있다.
+
+# 12. EL태그
+- 더 이상 JSP 페이지 내에서 자바 코드를 사용하지 않고 좀 더 간편하게 태그 형태의 출력을 위한 도구
+- request에 저장되어있는 값을 바로 사용할수있다. 
+- 사용법 :  ${ 키 }
+
+```html
+<!-- joinPro.jsp -->
+<h2>이름 : ${ name }</h2>
+<h2>나이 : ${ age }</h2>
+```
+
+## EL연산자
+- 사칙연산, 비교연산, 논리연산은 기존 자바코드와 동일하게 사용가능하다.
+- 협업을 위한 키워드를 제공한다.
+
+### 비교연산 키워드
+```
+${x gt y} 	<%-- >  greater than --%>			
+${x lt y} 	<%-- <  less than --%>  		
+${x ge y} 	<%-- >= greater or equal --%>
+${x le y} 	<%-- <= less or equal --%>
+${x eq y} 	<%-- =  equal --%>
+${x ne y} 	<%-- != not equal --%>
+```
+### 논리연산 키워드
+```
+${ x == x and y == y } 
+${x == x or x == y } 
+${not(x == x)} 
+```
+
+### empty 키워드
+```html
+<!-- empty키워드는 null이면 true값 반환 -->
+${!empty list}
+${empty list }
+```
+
+### 주의점
+```html
+<%
+	request.setAttribute("name1" ,"이만수");
+	session.setAttribute("name1", "홍길동");
+	session.setAttribute("name2", "이순신");
+%>
+
+${name1 } <!-- request 것이 우선순위로 적용돼서 이만수가 출력된다 -->
+${sessionScope.name1 }
+${name2 }
+```
+
+- request 와 session 의 키값이 같은 경우는 request먼저 적용된다.
+- session의 값을 사용하고 싶으면 키 값 앞에 sessionScope. 을 써줘야 한다.
+- 일반적으로 session 은 sessionScope. 을 무조건 사용하는 것이 오류를 줄일 수 있다. 
