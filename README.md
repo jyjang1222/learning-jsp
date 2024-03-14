@@ -467,11 +467,14 @@ member.setName(request.getParameter("name"));
 ```
 
 # 11. 게시판 알고리즘
-1. 자바 콘솔 게시판(배열)
-2. jsp x board (페이징 처리)
-3. jsp x board (댓글)
+1. 게시판 리스트
+2. 페이징 처리
+3. 댓글
 
-## 댓글 변수
+## 페이징 처리
+<img src="https://supercodemother.com/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F88f90185-6553-4902-b3fc-a1051a5b9b56%2F1387ace7-cc71-4fca-b15b-0d9a83d1a427%2FUntitled.png?table=block&id=66b35ca8-5b3d-4d6b-9bdf-23a5fe51aae2&spaceId=88f90185-6553-4902-b3fc-a1051a5b9b56&width=2000&userId=&cache=v2" width="600" height="auto">
+
+## 댓글
 | 변수 | 역할 |
 |:---|:---|
 | **ref** | 글 그룹 |
