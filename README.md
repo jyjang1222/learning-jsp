@@ -9,8 +9,9 @@
 7. [Out](#7-Out)
 8. [Include](#8-Include)
 9. [DB연결](#9-DB연결)
-10. [jsp액션 태그](#10-jsp액션-태그)
+10. [jsp액션 태그](#10-jsp-액션-태그)
 11. [Servlet](#11-Servlet)
+12. [EL태그](#12-EL태그)
 
 # 0. JSP (Java Server Page) 설치
 1. JDK : 자바언어 설치
@@ -444,7 +445,7 @@ pstmt.close();
 - Timestamp 클래스를 사용하면 데이터베이스에서 반환되는 타임존 정보를 보다 잘 처리할 수 있다.
 - Timestamp 객체에는 날짜와 시간을 저장할 뿐만 아니라 타임존 정보도 포함된다.
 
-# 10. jsp액션 태그
+# 10. jsp 액션 태그
 ```html
 // id는 변수명, class에는 패키지명 + 클래스명
 <jsp:useBean id="member" class="model.Member"></jsp:useBean>		
@@ -521,7 +522,7 @@ public class JoinAction extends HttpServlet {
 - HttpServelt 클래스는 웹을 개발하기위한 다양한 기술을 포함하고 있다.
 
 # 12. EL태그
-- 더 이상 JSP 페이지 내에서 자바 코드를 사용하지 않고 좀 더 간편하게 태그 형태의 출력을 위한 도구
+- JSP 페이지 내에서 자바 코드를 사용하지 않고 태그 형태의 출력을 위한 도구
 - request에 저장되어있는 값을 바로 사용할수있다. 
 - 사용법 :  ${ 키 }
 
