@@ -474,6 +474,7 @@ member.setName(request.getParameter("name"));
 
 ## 서블릿 파일 생성
 <img src="https://github.com/jyjang1222/learning-jsp/assets/89000811/c945e49f-8250-452b-92c8-bca87cf429c7" alt="">
+
 ```html
 <form action="JoinAction" method="post">
 	이름 : <input type="text" name="name">
