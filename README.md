@@ -11,7 +11,8 @@
 9. [DB연결](#9-DB연결)
 10. [jsp액션 태그](#10-jsp-액션-태그)
 11. [Servlet](#11-Servlet)
-12. [EL태그](#12-EL태그)
+12. [EL 태그](#12-EL-태그)
+13. [JSTL 태그](#13-JSTL-태그)
 
 # 0. JSP (Java Server Page) 설치
 1. JDK : 자바언어 설치
@@ -521,7 +522,7 @@ public class JoinAction extends HttpServlet {
 - 파일명은 접미사로 **Action**을 붙여준다.
 - HttpServelt 클래스는 웹을 개발하기위한 다양한 기술을 포함하고 있다.
 
-# 12. EL태그
+# 12. EL 태그
 - JSP 페이지 내에서 자바 코드를 사용하지 않고 태그 형태의 출력을 위한 도구
 - request에 저장되어있는 값을 바로 사용할수있다. 
 - 사용법 :  ${ 키 }
@@ -575,3 +576,72 @@ ${name2 }
 - request 와 session 의 키값이 같은 경우는 request먼저 적용된다.
 - session의 값을 사용하고 싶으면 키 값 앞에 sessionScope. 을 써줘야 한다.
 - 일반적으로 session 은 sessionScope. 을 무조건 사용하는 것이 오류를 줄일 수 있다. 
+
+# 13. JSTL 태그
+- EL태그와 마찬가지로 JSP 페이지 내에서 자바 코드를 사용하지 않기 위한 도구
+
+## 사전 조건
+1. WEB-INF > lib > jstl-1.2.jar  파일 추가 
+2. <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 추가
+
+## JSTL core
+### set, out, remove
+```html
+<%-- data변수 저장 후 출력 --%>
+<c:set var="data" value="10" /> <%--  request.setAttibute("data" , 10)  --%>
+data = <c:out value="${data}" />
+
+<%-- data변수 삭제 후 출력 --%>	
+<c:remove var="data" /> <%--  request.setAttibute("data" , "") --%>
+data = <c:out value="${data}" />
+```
+
+### if
+```html
+<c:set var="country" value="korea" />
+<c:if test="${ country ne null }">
+	국가명 : <c:out value="${ country }" />
+</c:if>
+	
+<c:out value="${ country }" />의 겨울은 춥다.
+```
+
+### for
+```html
+<c:forEach var="i" begin="1" end="10" step="2">
+	${ i } &nbsp;
+</c:forEach>
+
+<c:forEach var="i" begin="1" end="10" step="${ i+=2 }">
+	${ i } &nbsp;
+</c:forEach>
+```
+
+### for 확장
+```html
+<% ArrayList<MemberDTO> list = new ArrayList<MemberDTO>(); %>
+
+<%-- for(MemberDTO mem : memberList){} --%>
+<c:forEach var="mem" items="${ memberList }"> 
+<tr>
+	<%-- mem.getId()와 동일 문장 --%>
+	<td>${ mem.id }</td>
+	<td>${ mem.pw }</td>
+	<td>${ mem.name }</td>
+	<td>${ mem.email }</td>
+	<td>${ mem.hobby }</td>
+</tr>
+</c:forEach>
+```
+
+## JSTL fmt
+```html
+<p>number  : <fmt:formatNumber value="12345.678" type="number" />
+<!-- 12,345.678 -->
+<p>currency: <fmt:formatNumber value="12345.678" type="currency" currencySymbol="￦" />
+<!-- ￦12,346 -->
+<p>percent : <fmt:formatNumber value="12345.678" type="percent" />
+<!-- 1,234,568% -->	
+<p>pattern=".0" : <fmt:formatNumber value="12345.678" pattern=".00000" />
+<!-- 12345.67800 -->
+```
