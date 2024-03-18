@@ -583,6 +583,7 @@ ${name2 }
 ## 사전 조건
 1. WEB-INF > lib > jstl-1.2.jar  파일 추가 
 2. <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 추가
+3. <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 ## JSTL core
 ### set, out, remove
