@@ -646,3 +646,28 @@ data = <c:out value="${data}" />
 <p>pattern=".0" : <fmt:formatNumber value="12345.678" pattern=".00000" />
 <!-- 12345.67800 -->
 ```
+
+# 14. 경로지정
+## request.getContextPath()
+```html
+<!-- /jsp_03_00_mvc2_basic -->
+<form action="${pageContext.request.contextPath}/login.do" method="post">
+<form action="<%=request.getContextPath()%>/login.do" method="post">
+```
+- 현재 접속해 있는 프로젝트 주소만 가져온다.
+- ${pageContext.request.contextPath} 도 사용가능하다.
+
+## request.getRequestDispatcher()
+```java
+request.getRequestDispatcher("/00_ex/loginPro.jsp");
+```
+- "/"   ->  "http://localhost:8080/jsp_03_00_mvc2_basic"
+- dispatcher의 절대 경로는 프로젝트까지 포함한다.
+
+## response.sendRedirect()
+```java
+String contextPath = request.getContextPath();
+response.sendRedirect(contextPath + "/00_ex/loginPro.jsp");
+```
+- "/"   ->  "http://localhost:8080/"
+- 상대 경로보다는 절대 경로를 통해 주소를 지정하는 것이 좋다.
