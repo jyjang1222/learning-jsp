@@ -7,11 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>회원가입</h2>
-	<form action="join.do" method="post">
-		이름 : <input type="text" name="name">
-		나이 : <input type="text" name="age">
-		<input type="submit" value="회원가입">
-	</form>
+	${pageContext.request.contextPath}
+	<h2>${ check }</h2>
 </body>
 </html>
